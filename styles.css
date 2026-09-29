@@ -1,0 +1,651 @@
+/* DAMIEN.WORLD — Light SaaS Theme + Running Purple Sand */
+:root {
+  --bg: #FFFFFF;
+  --s1: #F8FAFC;
+  --s2: #F1F5F9;
+  --tx: #0F172A;
+  --mu: #64748B;
+  --ac: #635BFF;
+  --ac-hover: #4F46E5;
+  --ac-light: #EEF2FF;
+  --bd: #E2E8F0;
+  --f: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --h: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--tx);
+  font: 400 1.05rem/1.7 var(--f);
+  overflow-x: hidden;
+  position: relative;
+}
+
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 2px solid var(--ac); outline-offset: 3px; }
+
+/* Fullscreen Background Canvas for Running Purple Sand */
+#bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.skip { position: fixed; left: 8px; top: -60px; background: var(--ac); color: #fff; padding: 8px 14px; z-index: 99; border-radius: 6px; }
+.skip:focus { top: 8px; }
+
+h1, h2, h3 { font-family: var(--h); font-weight: 800; line-height: 1.1; letter-spacing: -0.03em; color: var(--tx); }
+h1 { font-size: clamp(2.8rem, 6.5vw, 5.5rem); max-width: 17ch; margin-bottom: 1.5rem; }
+h2 { font-size: clamp(2rem, 4vw, 3.2rem); margin-bottom: 1rem; }
+i { font-style: normal; color: var(--ac); }
+em { font-style: normal; color: var(--ac); }
+
+.pad { padding: clamp(5rem, 10vw, 8rem) clamp(1.5rem, 6vw, 6rem); position: relative; z-index: 1; }
+
+/* Eyebrow transformed into glowing purple pill badge */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--ac-light);
+  color: var(--ac);
+  border: 1px solid #E0E7FF;
+  padding: 0.4rem 1rem;
+  border-radius: 99px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 2px 10px rgba(99, 91, 255, 0.08);
+}
+
+.sub { color: var(--mu); margin-bottom: 2rem; }
+.ph { width: 100%; height: 100%; background: linear-gradient(135deg, #E2E8F0, #CBD5E1); }
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* Loader & Cursor */
+#loader { position: fixed; inset: 0; background: #FFFFFF; z-index: 100; display: grid; place-items: center; font: 800 2rem var(--h); color: var(--tx); }
+.cursor { position: fixed; left: 0; top: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--ac); pointer-events: none; z-index: 90; display: none; }
+.spine-line { position: fixed; left: 16px; top: 20vh; height: 60vh; width: 2px; background: var(--bd); z-index: 40; }
+.spine-line b { display: block; height: 100%; background: var(--ac); transform: scaleY(0); transform-origin: top; }
+
+/* Header Nav */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.2rem clamp(1.5rem, 4vw, 4rem);
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--bd);
+}
+.logo { font: 800 1.3rem var(--h); color: var(--tx); display: flex; align-items: center; gap: 0.5rem; }
+.logo-dots { display: grid; grid-template-columns: repeat(2, 4px); gap: 3px; }
+.logo-dots i { width: 4px; height: 4px; background: var(--ac); border-radius: 50%; display: block; }
+
+nav { display: flex; gap: 1.6rem; font-size: 0.9rem; font-weight: 600; }
+nav a { color: var(--mu); transition: color .2s; }
+nav a:hover { color: var(--ac); }
+
+.burger { display: none; background: none; border: 0; width: 32px; height: 24px; position: relative; cursor: pointer; }
+.burger span { position: absolute; left: 0; width: 100%; height: 2px; background: var(--tx); transition: .3s; }
+.burger span:first-child { top: 6px; } .burger span:last-child { top: 16px; }
+
+/* SaaS Purple Pill Button */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.6rem;
+  border-radius: 99px;
+  background: var(--ac);
+  color: #FFFFFF;
+  font: 600 0.95rem var(--f);
+  cursor: pointer;
+  border: none;
+  transition: all .25s ease;
+  box-shadow: 0 4px 14px rgba(99, 91, 255, 0.25);
+}
+.btn:hover { background: var(--ac-hover); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(99, 91, 255, 0.35); }
+
+/* Hero */
+.hero { min-height: 90vh; display: flex; flex-direction: column; justify-content: center; padding: 9rem clamp(1.5rem, 6vw, 6rem) 4rem; position: relative; z-index: 1; }
+.hero-content { max-width: 1100px; }
+.w { display: inline-block; }
+.lead { color: var(--mu); max-width: 48ch; font-size: 1.15rem; margin-bottom: 2.2rem; }
+
+/* Animals Cards */
+.agrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; margin-top: 3rem; }
+.acard { background: var(--bg); border: 1px solid var(--bd); border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05); transition: transform .3s, box-shadow .3s; }
+.acard:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -10px rgba(99,91,255,0.12); }
+.acard .im { aspect-ratio: 4/3; overflow: hidden; background: var(--s1); }
+.acard div.t { padding: 1.5rem; }
+.acard p { color: var(--mu); font-size: 0.95rem; margin-top: 0.4rem; }
+
+/* Books Shelf */
+/* =========================================
+   STICKY SCROLL 3D COVERFLOW SECTION
+   ========================================= */
+
+/* Height creates vertical scroll space for card progression */
+.reading-shelf-scroll-wrapper {
+  position: relative;
+  height: 350vh;
+  width: 100%;
+}
+
+/* Sticky viewport pinning */
+.reading-shelf-sticky-inner {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Header Styling */
+.shelf-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.shelf-badge {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #6366f1;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.shelf-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.5px;
+}
+
+.shelf-subtitle {
+  font-size: 0.92rem;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Filter Pills Bar */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 30px;
+}
+
+.filter-pill {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  color: #334155;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  outline: none;
+}
+
+.filter-pill:hover {
+  border-color: #cbd5e1;
+  background: #f8fafc;
+  transform: translateY(-2px);
+}
+
+.filter-pill.active {
+  background: #0d0e1b;
+  color: #ffffff;
+  border-color: #0d0e1b;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(13, 14, 27, 0.25);
+}
+
+.filter-pill.view-more {
+  border-color: #0d0e1b;
+  font-weight: 600;
+}
+
+/* 3D Coverflow Container */
+.coverflow-container {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+  margin-bottom: 20px;
+}
+
+.coverflow-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+/* Card Styling */
+.coverflow-card {
+  position: absolute;
+  width: 310px;
+  height: 390px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+              opacity 0.5s ease,
+              filter 0.5s ease,
+              box-shadow 0.5s ease;
+  cursor: pointer;
+  user-select: none;
+  background: #000;
+}
+
+.coverflow-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Book Details Overlay on Cards */
+.card-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+  color: #ffffff;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.card-caption h3 {
+  margin: 0 0 4px 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.card-caption p {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #e2e8f0;
+}
+
+/* Active Card Position */
+.coverflow-card.active {
+  transform: translateX(0) scale(1.15);
+  z-index: 10;
+  opacity: 1;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+  filter: brightness(1);
+}
+
+.coverflow-card.active .card-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Side Card Positions */
+.coverflow-card.prev-1 {
+  transform: translateX(-240px) scale(0.88) rotateY(8deg);
+  z-index: 5;
+  opacity: 0.85;
+  filter: brightness(0.9);
+}
+
+.coverflow-card.next-1 {
+  transform: translateX(240px) scale(0.88) rotateY(-8deg);
+  z-index: 5;
+  opacity: 0.85;
+  filter: brightness(0.9);
+}
+
+.coverflow-card.prev-2 {
+  transform: translateX(-430px) scale(0.72) rotateY(15deg);
+  z-index: 2;
+  opacity: 0.45;
+  filter: brightness(0.75);
+}
+
+.coverflow-card.next-2 {
+  transform: translateX(430px) scale(0.72) rotateY(-15deg);
+  z-index: 2;
+  opacity: 0.45;
+  filter: brightness(0.75);
+}
+
+.coverflow-card.hidden {
+  transform: translateX(0) scale(0.5);
+  z-index: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Controls */
+.carousel-controls {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.control-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #0f172a;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.control-btn:hover {
+  background: #f1f5f9;
+  border-color: #0d0e1b;
+  transform: scale(1.1);
+}
+
+/* Magazines */
+.mags { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+.mag { background: var(--bg); border: 1px solid var(--bd); border-radius: 16px; padding: 1.5rem; aspect-ratio: 3/4; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05); transition: transform .3s; }
+.mag:hover { transform: translateY(-4px); }
+.mag b { font: 800 2.2rem var(--h); color: var(--ac); }
+.mag p { color: var(--mu); font-size: .9rem; }
+
+/* Projects & Art */
+.filters { display: flex; gap: .6rem; flex-wrap: wrap; margin: 1.5rem 0 2rem; }
+.filters button { background: var(--s1); color: var(--mu); border: 1px solid var(--bd); border-radius: 99px; padding: .5rem 1.3rem; cursor: pointer; font: 600 0.85rem var(--f); transition: .2s; }
+.filters .on { background: var(--ac); color: #fff; border-color: var(--ac); }
+.pgrid { columns: 3; column-gap: 1.5rem; }
+.pitem { break-inside: avoid; margin-bottom: 1.5rem; background: var(--bg); border: 1px solid var(--bd); border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px -10px rgba(0,0,0,0.05); }
+.pitem .im { aspect-ratio: 4/3; }.pitem:nth-child(3n+2) .im { aspect-ratio: 1/1; }
+.pitem div.t { padding: 1.2rem; }
+.pitem p { color: var(--mu); font-size: .9rem; }
+.pitem[hidden] { display: none; }
+
+/* About & Stats */
+.about { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; }
+.portrait { position: sticky; top: 6rem; aspect-ratio: 4/5; border-radius: 24px; overflow: hidden; border: 1px solid var(--bd); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.08); }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2.5rem; }
+.stats b { display: block; font: 800 2.5rem var(--h); color: var(--ac); }
+.stats span { color: var(--mu); font-size: .85rem; font-weight: 600; }
+
+/* Awards */
+.awards { list-style: none; margin-top: 2rem; }
+.awards li { display: grid; grid-template-columns: 6rem 1fr auto; gap: 1rem; padding: 1.5rem 0; border-bottom: 1px solid var(--bd); align-items: baseline; }
+.awards h3 { font-size: 1.3rem; }
+.awards .yr { font: 800 1.5rem var(--h); color: var(--ac); }
+.awards span { color: var(--mu); font-size: .9rem; }
+
+/* Footer */
+.foot { border-top: 1px solid var(--bd); background: var(--s1); }
+form { display: grid; gap: 1rem; max-width: 500px; margin: 1.5rem 0; }
+label { display: grid; gap: .4rem; color: var(--tx); font-size: .9rem; font-weight: 600; }
+input, textarea { background: #FFFFFF; color: var(--tx); border: 1px solid var(--bd); border-radius: 10px; padding: .8rem 1rem; font: inherit; }
+input:focus, textarea:focus { border-color: var(--ac); outline: none; }
+.copy { color: var(--mu); font-size: .85rem; }
+
+@media(max-width: 960px) {
+  .agrid, .mags { grid-template-columns: repeat(2, 1fr); }
+  .pgrid { columns: 2; }
+  .about { grid-template-columns: 1fr; }
+  .portrait { position: relative; top: 0; max-width: 420px; }
+  .nav { padding: 1rem 1.5rem; }
+}
+@media(max-width: 760px) {
+  .burger { display: block; }
+  nav, .nav-cta { display: none; }
+  .agrid, .mags { grid-template-columns: 1fr; }
+  .pgrid { columns: 1; }
+  .shelf { flex-direction: column; height: auto; }
+  .spine { flex: none; height: 64px; align-items: center; }
+  .spine h3 { writing-mode: horizontal-tb; transform: none; }
+}
+@media(hover:hover) and (pointer:fine) { .cursor { display: block; } }
+
+/* =========================================
+   MAGAZINE PRESERVATION SECTION STYLES
+   ========================================= */
+
+.magazine-preservation-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 20px;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.magazine-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.magazine-badge {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #6366f1;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.magazine-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 6px 0;
+  letter-spacing: -0.5px;
+}
+
+.magazine-subtitle {
+  font-size: 0.95rem;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Responsive Grid Layout */
+.magazine-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.magazine-card {
+  position: relative;
+  height: 380px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+}
+
+.magazine-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
+}
+
+.magazine-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.magazine-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Card Gradient Overlay & Caption */
+.mag-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.4) 70%, transparent);
+  color: #ffffff;
+}
+
+.mag-info span {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #a5b4fc;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.mag-info h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+/* =========================================
+   ABOUT DAMIEN SECTION STYLES
+   ========================================= */
+
+.about-damien-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 20px;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.about-container {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 50px;
+  align-items: center;
+}
+
+/* Left Image Card Style */
+.about-image-card {
+  width: 100%;
+  height: 480px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  background: #e2e8f0;
+}
+
+.about-image-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.about-image-card:hover img {
+  transform: scale(1.03);
+}
+
+/* Right Content Styles */
+.about-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-badge {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  color: #6366f1;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.about-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+}
+
+.about-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #475569;
+  margin: 0 0 35px 0;
+}
+
+/* Stats Row */
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.stat-item h3 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #4f46e5;
+  margin: 0 0 4px 0;
+  letter-spacing: -0.5px;
+}
+
+.stat-item p {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Responsive adjustments for mobile screens */
+@media (max-width: 768px) {
+  .about-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .about-image-card {
+    height: 360px;
+  }
+
+  .about-stats {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+}

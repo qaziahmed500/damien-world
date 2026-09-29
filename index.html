@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> <link rel="stylesheet" href="css/styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Damien.world — Animals, Books, Magazines &amp; Making</title>
+<meta name="description" content="Damien's world: animal husbandry, a working library, preserved magazines, art and projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- Running Purple Sand Canvas Background -->
+<canvas id="bg" aria-hidden="true"></canvas>
+
+<div id="loader" aria-hidden="true"><span>Damien<i>.</i>world</span></div>
+<div class="cursor" aria-hidden="true"></div>
+<div class="spine-line" aria-hidden="true"><b></b></div>
+
+<header class="nav">
+  <a class="logo" href="#home">
+    <span class="logo-dots"><i></i><i></i><i></i><i></i></span>
+    Damien<i>.</i>world
+  </a>
+  <button class="burger" aria-expanded="false" aria-controls="menu" aria-label="Menu"><span></span><span></span></button>
+  <nav id="menu" aria-label="Main">
+    <a href="#home">Home</a><a href="#animals">Animals &amp; Husbandry</a><a href="#books">Books</a>
+    <a href="#magazines">Magazines</a><a href="#art">Art &amp; Projects</a><a href="#about">About</a><a href="#awards">Awards</a>
+  </nav>
+  <div class="nav-cta">
+    <a class="btn mag-btn" href="#contact">Get in touch</a>
+  </div>
+</header>
+
+<main id="main">
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <p class="eyebrow" data-reveal>01 — Welcome</p>
+      <h1><span class="w">A&nbsp;world</span> <span class="w">of&nbsp;animals,</span> <span class="w">books</span> <span class="w">&amp;&nbsp;careful</span> <span class="w"><em>making.</em></span></h1>
+      <p class="lead" data-reveal>Husbandry, a working library, preserved magazines and a workshop of projects, kept in one place.</p>
+      <a class="btn mag-btn" href="#animals">Start exploring</a>
+    </div>
+  </section>
+
+  <section id="animals" class="pad">
+    <p class="eyebrow" data-reveal>02 — Animals &amp; Husbandry</p>
+    <h2 data-reveal>Life on the land</h2>
+    <div class="agrid" id="animalGrid"></div>
+  </section>
+
+  <!-- Scroll Section Container -->
+<section class="reading-shelf-scroll-wrapper" id="scrollShelfWrapper">
+  <div class="reading-shelf-sticky-inner">
+
+    <!-- Original Section Header Restored -->
+    <div class="shelf-header">
+      <span class="shelf-badge">03 — Books & Educational Reading</span>
+      <h2 class="shelf-title">The reading shelf</h2>
+      <p class="shelf-subtitle">Scroll down or click to explore each reading card.</p>
+    </div>
+
+    <!-- Category Filter Bar -->
+    <div class="filter-bar">
+      <button class="filter-pill active">All Books</button>
+      <button class="filter-pill">Agriculture</button>
+      <button class="filter-pill">Nature</button>
+      <button class="filter-pill">Printing</button>
+      <button class="filter-pill view-more">View All &rarr;</button>
+    </div>
+
+    <!-- 3D Coverflow Container with Original 6 Items -->
+    <div class="coverflow-container">
+      <div class="coverflow-track" id="coverflowTrack">
+
+        <!-- Book 1 -->
+        <div class="coverflow-card">
+          <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="The Herdsman's Year">
+          <div class="card-caption">
+            <h3>The Herdsman's Year</h3>
+            <p><strong>A. Collins</strong> — Practical husbandry, month by month.</p>
+          </div>
+        </div>
+
+        <!-- Book 2 -->
+        <div class="coverflow-card">
+          <img src="https://images.unsplash.com/photo-1473081556163-2a17de81fc97?auto=format&fit=crop&w=800&q=80" alt="Field Notes on Bees">
+          <div class="card-caption">
+            <h3>Field Notes on Bees</h3>
+            <p><strong>L. Miller</strong> — Observations on hive behavior.</p>
+          </div>
+        </div>
+
+        <!-- Book 3 -->
+        <div class="coverflow-card">
+          <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80" alt="A Natural History of Birds">
+          <div class="card-caption">
+            <h3>A Natural History of Birds</h3>
+            <p><strong>R. Thorne</strong> — Wild avian species study.</p>
+          </div>
+        </div>
+
+        <!-- Book 4 -->
+        <div class="coverflow-card">
+          <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80" alt="The Small Farm Manual">
+          <div class="card-caption">
+            <h3>The Small Farm Manual</h3>
+            <p><strong>M. Vance</strong> — Essential tools and practices.</p>
+          </div>
+        </div>
+
+        <!-- Book 5 -->
+        <div class="coverflow-card">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="Reading the Land">
+          <div class="card-caption">
+            <h3>Reading the Land</h3>
+            <p><strong>E. Shore</strong> — Understanding soil and flora.</p>
+          </div>
+        </div>
+
+        <!-- Book 6 -->
+        <div class="coverflow-card">
+          <img src="https://images.unsplash.com/photo-1562654501-a0ccc0fc3fb1?auto=format&fit=crop&w=800&q=80" alt="Craft of the Printer">
+          <div class="card-caption">
+            <h3>Craft of the Printer</h3>
+            <p><strong>J. Mercer</strong> — Traditional press technique.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Manual Arrow Controls -->
+    <div class="carousel-controls">
+      <button class="control-btn" id="prevBtn" aria-label="Previous">&larr;</button>
+      <button class="control-btn" id="nextBtn" aria-label="Next">&rarr;</button>
+    </div>
+
+  </div>
+</section>
+
+  <section class="magazine-preservation-section">
+  <div class="magazine-header">
+    <span class="magazine-badge">04 — Magazine Preservation</span>
+    <h2 class="magazine-title">Saved from the recycling bin</h2>
+    <p class="magazine-subtitle">Rescued pages, vintage editions, and forgotten prints given a second digital life.</p>
+  </div>
+
+  <!-- Magazine Archive Grid -->
+  <div class="magazine-grid">
+    <div class="magazine-card">
+      <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=800&q=80" alt="The Illustrated Pioneer">
+      <div class="mag-info">
+        <span>1974 Archive</span>
+        <h3>The Illustrated Pioneer</h3>
+      </div>
+    </div>
+
+    <div class="magazine-card">
+      <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=800&q=80" alt="Design & Craft Quarterly">
+      <div class="mag-info">
+        <span>Issue #12</span>
+        <h3>Design & Craft Quarterly</h3>
+      </div>
+    </div>
+
+    <div class="magazine-card">
+      <img src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&w=800&q=80" alt="Architecture of the Future">
+      <div class="mag-info">
+        <span>1982 Edition</span>
+        <h3>Architecture of the Future</h3>
+      </div>
+    </div>
+
+    <div class="magazine-card">
+      <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=800&q=80" alt="Naturalist Review">
+      <div class="mag-info">
+        <span>Vol. 5</span>
+        <h3>Naturalist Review</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+ <section class="about-damien-section">
+  <div class="about-container">
+    
+    <!-- Left Side: Image Card -->
+    <div class="about-image-card">
+      <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80" alt="Damien Portrait">
+    </div>
+
+    <!-- Right Side: Content & Stats -->
+    <div class="about-content">
+      <span class="about-badge">06 — About Damien</span>
+      <h2 class="about-title">Curious, hands-on, patient</h2>
+      <p class="about-text">
+        Damien keeps animals, restores paper history and builds things that last. Replace this paragraph with your own story: where you grew up, what started the collection and why it matters.
+      </p>
+
+      <!-- Stats Grid -->
+      <div class="about-stats">
+        <div class="stat-item">
+          <h3>25</h3>
+          <p>years keeping animals</p>
+        </div>
+        <div class="stat-item">
+          <h3>1,200</h3>
+          <p>books catalogued</p>
+        </div>
+        <div class="stat-item">
+          <h3>300</h3>
+          <p>magazines saved</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+  <section id="awards" class="pad">
+    <p class="eyebrow" data-reveal>07 — Awards &amp; Achievements</p>
+    <h2 data-reveal>Recognition</h2>
+    <ol class="awards" id="awardList"></ol>
+  </section>
+</main>
+
+<footer class="pad foot">
+  <h2>Say hello</h2>
+  <form id="contact">
+    <label>Name <input name="name" required autocomplete="name"></label>
+    <label>Email <input name="email" type="email" required autocomplete="email"></label>
+    <label>Message <textarea name="msg" rows="4" required></textarea></label>
+    <button class="btn mag-btn" type="submit">Send message</button>
+  </form>
+  <p class="copy">&copy; <span id="yr"></span> Damien.world</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+<script src="data/content.js" defer></script>
+<script src="js/main.js" defer></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
